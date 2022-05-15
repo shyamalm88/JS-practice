@@ -1,11 +1,19 @@
-findDuplicates = (arr) => {
-  let map = new Map();
-  for (let i = 0; i < arr.length; i++) {
-    if (!map.has(arr[i])) {
-      map.set(arr[i], arr[i]);
-    }
+const findDuplicate = (arr) => {
+  let slow = arr[0];
+  let fast = arr[0];
+
+  do {
+    slow = arr[slow];
+    fast = arr[arr[fast]];
+  } while (slow != fast);
+
+  fast = arr[0];
+
+  while (slow != fast) {
+    slow = arr[slow];
+    fast = arr[fast];
   }
-  return [...map.values()];
+  return slow;
 };
 
-console.log(findDuplicates([1, 2, 3, 4, 5, 6, 1]));
+console.log(findDuplicate([1, 2, 3, 4, 4, 6, 7]));
