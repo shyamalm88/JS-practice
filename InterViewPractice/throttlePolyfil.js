@@ -1,13 +1,13 @@
 const throttle = function (callback, delay) {
   let flag = true;
+  let context = this;
+  let args = arguments;
   return function () {
-    let context = -this;
-    let args = arguments;
     if (flag) {
       callback.apply(context, args);
       flag = false;
       setTimeout(() => {
-        flay = true;
+        flag = true;
       }, delay);
     }
   };

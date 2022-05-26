@@ -1,10 +1,9 @@
-const debounce = function (callback, delay) {
-  let that = this;
-  let args = arguments;
+const debounce = (func, delay) => {
+  let timer;
   return function () {
+    const context = this;
+    const args = arguments;
     clearTimeout(timer);
-    let timer = setTimeout(() => {
-      callback.apply(that, args);
-    }, delay);
+    timer = setTimeout(() => func.apply(context, args), delay);
   };
 };
