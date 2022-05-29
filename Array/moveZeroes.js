@@ -10,6 +10,7 @@ const moveZeros = (arr) => {
     arr[k] = 0;
   }
   // console.log(arr);
+  return arr;
 };
 
 moveZeros([0, 1, 2, 0, 3, 4, 0, 5, 0, 0]);
