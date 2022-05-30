@@ -5,16 +5,32 @@ function showText(text, time) {
     }, time);
   });
 }
-const myPromiseAll = (promises) => {
-  let result = [];
+// const myPromiseAll = (promises) => {
+//   let result = [];
+//   return new Promise((resolve, reject) => {
+//     promises.forEach((p, index) => {
+//       p.then((res) => {
+//         result.push(res);
+//         if (index === promises.length - 1) {
+//           resolve(result);
+//         }
+//       }).catch((err) => reject(err));
+//     });
+//   });
+// };
+
+const myPromiseAll = function (promises) {
+  const result = [];
   return new Promise((resolve, reject) => {
-    promises.forEach((p, index) => {
+    promises.forEach((p, i) => {
       p.then((res) => {
         result.push(res);
-        if (index === promises.length - 1) {
+        if (i === promises.length - 1) {
           resolve(result);
         }
-      }).catch((err) => reject(err));
+      }).catch((err) => {
+        reject(err);
+      });
     });
   });
 };

@@ -9,8 +9,8 @@ Person.prototype.greet = function () {
 };
 
 let Student = function (name, origin) {
-  Person.call(this, origin);
   this.name = name;
+  Person.call(this, origin);
 };
 
 Student.prototype = Object.create(Person.prototype);
