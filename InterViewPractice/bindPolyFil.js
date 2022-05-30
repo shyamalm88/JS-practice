@@ -18,10 +18,10 @@ const printName = function (state, country) {
 
 Function.prototype.myBind = function (context, ...args) {
   context._this = this;
-  return function (...args2) {
-    return context._this(...args, ...args2);
+  return function () {
+    return context._this(...args);
   };
 };
 
-const fn = printName.myBind(Person, "WB");
-fn("India");
+const fn = printName.myBind(Person, "WB", "India");
+fn();

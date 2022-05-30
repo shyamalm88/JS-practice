@@ -14,4 +14,4 @@ Function.prototype.myCall = function (context, ...args) {
   return context._this(...args);
 };
 
-const fn = printName.myCall(Person, "WB", "India");
+console.log(printName.myCall(Person, "WB", "India"));

@@ -1,18 +1,12 @@
 const arr = [1, 2, 3, 4];
 
-Array.prototype.myReduce = function (callback, initialValue, context) {
-  let accumulator = initialValue ? initialValue : undefined;
-  for (let index = 0; index < this.length; index++) {
+Array.prototype.myReducer = function (callback, initialValue, context) {
+  let accumulator = initialValue || undefined;
+  for (let i = 0; i < this.length; i++) {
     if (accumulator) {
-      accumulator = callback.call(
-        context,
-        accumulator,
-        this[index],
-        index,
-        this
-      );
+      accumulator = callback.call(context, accumulator, this[i], i, this);
     } else {
-      accumulator = this[index];
+      accumulator = this[i];
     }
   }
   return accumulator;
