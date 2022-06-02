@@ -1,30 +1,18 @@
-let instance;
-let counter = 0;
+//pure js
+var Singleton = (function () {
+  var instance;
 
-class Counter {
-  constructor() {
-    if (instance) {
-      throw new Error("You can only create one instance!");
-    }
-    instance = this;
-  }
+  return {
+    getInstance: function () {
+      if (!instance) {
+        instance = new Object("I am the instance");
+      }
+      return instance;
+    },
+  };
+})();
 
-  getInstance() {
-    return this;
-  }
+var instance1 = Singleton.getInstance();
+var instance2 = Singleton.getInstance();
 
-  getCount() {
-    return counter;
-  }
-
-  increment() {
-    return ++counter;
-  }
-
-  decrement() {
-    return --counter;
-  }
-}
-
-const singletonCounter = Object.freeze(new Counter());
-export default singletonCounter;
+console.log("Same instance? " + (instance1 === instance2));
