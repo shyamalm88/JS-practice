@@ -12,11 +12,11 @@ Member.prototype = {
   },
 };
 
-const Chatroom = function (member) {
+const ChatRoom = function () {
   this.members = {};
 };
 
-Chatroom.prototype = {
+ChatRoom.prototype = {
   addMember: function (member) {
     this.members[member.name] = member;
     member.chatroom = this;
@@ -26,13 +26,12 @@ Chatroom.prototype = {
   },
 };
 
-const chat = new Chatroom();
+const chatroom = new ChatRoom();
+
 const bob = new Member("Bob");
 const john = new Member("John");
 const jane = new Member("Jane");
-
-chat.addMember(bob);
-chat.addMember(john);
-chat.addMember(jane);
-
+chatroom.addMember(bob);
+chatroom.addMember(john);
+chatroom.addMember(jane);
 bob.send("Hi John", john);

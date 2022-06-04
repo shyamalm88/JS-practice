@@ -1,4 +1,4 @@
-let Subject = function () {
+const Subject = function () {
   this.observers = [];
 };
 
@@ -10,18 +10,17 @@ Subject.prototype = {
     this.observers.filter((func) => func != fn);
   },
   next: function (message) {
-    this.observers.forEach((fn) => {
-      fn.call(this, message);
+    this.observers.forEach((func) => {
+      func.call(this, message);
     });
   },
 };
 
-let sub1 = new Subject();
+function Observer(message) {
+  console.log(message);
+}
 
-let Observer = function (message) {
-  console.log("Hi" + message);
-};
-
+const sub1 = new Subject();
 sub1.subscribe(Observer);
 
-sub1.next(" Hello from next fire");
+sub1.next("Hi Hello");
