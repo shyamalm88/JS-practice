@@ -1,17 +1,26 @@
-var Singleton = (function () {
-  var instance;
+class Settings {
+  constructor() {
+    if (Settings.instance instanceof Settings) {
+      return Settings.instance;
+    }
+    this.settingObj = {
+      background: "#ff000",
+      version: Math.floor(Math.random() * 400),
+    };
 
-  return {
-    getInstance: function () {
-      if (!instance) {
-        instance = new Object("I am the instance");
-      }
-      return instance;
-    },
-  };
-})();
+    Object.freeze(this.settingObj);
+    Object.freeze(this);
+    Settings.instance = this;
+  }
 
-var instance1 = Singleton.getInstance();
-var instance2 = Singleton.getInstance();
+  get(key) {
+    return this.settingObj[key];
+  }
+}
 
-console.log("Same instance? " + (instance1 === instance2));
+const s = new Settings();
+const b = new Settings();
+
+console.log(s === b);
+console.log(s.get("version"));
+console.log(b.get("version"));
