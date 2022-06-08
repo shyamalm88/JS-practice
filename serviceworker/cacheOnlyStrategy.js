@@ -2,7 +2,7 @@
 const cacheName = "MyFancyCacheName_v1";
 
 // Assets to precache
-const precachedAssets = [
+const preCachedAssets = [
   "/possum1.jpg",
   "/possum2.jpg",
   "/possum3.jpg",
@@ -13,7 +13,7 @@ self.addEventListener("install", (event) => {
   // Precache assets on install
   event.waitUntil(
     caches.open(cacheName).then((cache) => {
-      return cache.addAll(precachedAssets);
+      return cache.addAll(preCachedAssets);
     })
   );
 });
@@ -21,10 +21,10 @@ self.addEventListener("install", (event) => {
 self.addEventListener("fetch", (event) => {
   // Is this one of our precached assets?
   const url = new URL(event.request.url);
-  const isPrecachedRequest = precachedAssets.includes(url.pathname);
+  const isPreCachedRequest = preCachedAssets.includes(url.pathname);
 
-  if (isPrecachedRequest) {
-    // Grab the precached asset from the cache
+  if (isPreCachedRequest) {
+    // Grab the preCached asset from the cache
     event.respondWith(
       caches.open(cacheName).then((cache) => {
         return cache.match(event.request.url);
