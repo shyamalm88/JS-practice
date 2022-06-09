@@ -16,3 +16,15 @@ Promise.myAllSettled = function (promises) {
   });
   return Promise.all(mappedPromises);
 };
+
+const promise1 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 500, "one");
+});
+
+const promise2 = new Promise((resolve, reject) => {
+  setTimeout(reject, 100, "two");
+});
+
+Promise.myAllSettled([promise1, promise2]).then((val) => {
+  console.log(val);
+});
