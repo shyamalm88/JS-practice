@@ -5,16 +5,16 @@ const longestIncreasingSubsequence = function (arr) {
   return sequence(0, -1, arr, arr.length, dp);
 };
 
-const sequence = function (indx, prevIndx, arr, n, dp) {
-  if (indx === n) return 0;
-  if (dp[indx][prevIndx + 1] != -1) {
-    return dp[indx][prevIndx + 1];
+const sequence = function (index, prevIndex, arr, n, dp) {
+  if (index === n) return 0;
+  if (dp[index][prevIndex + 1] != -1) {
+    return dp[index][prevIndex + 1];
   }
-  let length = 0 + sequence(indx + 1, prevIndx, arr, n, dp);
-  if (prevIndx === -1 || arr[indx] > arr[prevIndx]) {
-    length = 1 + sequence(indx + 1, indx, arr, n, dp);
+  let length = 0 + sequence(index + 1, prevIndex, arr, n, dp);
+  if (prevIndex == -1 || arr[index] > arr[prevIndex]) {
+    length = 1 + sequence(index + 1, index, arr, n, dp);
   }
-  return (dp[indx][prevIndx + 1] = length);
+  return (dp[index][prevIndex + 1] = length);
 };
 
-console.log(longestIncreasingSubsequence([5, 4, 11, 1, 16, 8]));
+console.log(longestIncreasingSubsequence([10, 9, 2, 5, 3, 7, 101, 18]));
