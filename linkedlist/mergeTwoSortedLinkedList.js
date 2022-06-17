@@ -10,8 +10,8 @@ class Node {
 const mergeTwoLinkedList = (list1, list2) => {
   console.log(list1);
   console.log(list2);
-  if (list1 == null) return list2;
-  if (list2 == null) return list1;
+  if (list1 === null) return list2;
+  if (list2 === null) return list1;
 
   if (list1.data > list2.data) {
     let temp = list1;
@@ -20,6 +20,7 @@ const mergeTwoLinkedList = (list1, list2) => {
   }
 
   let res = list1;
+
   while (list1 != null && list2 != null) {
     let temp = null;
     while (list1 != null && list1.data <= list2.data) {
