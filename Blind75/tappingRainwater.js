@@ -1,27 +1,23 @@
 const tappingRainWater = (heights) => {
-  let leftMaxHeight = 0;
-  let rightMaxHeight = 0;
-  let result = 0;
   let left = 0;
   let right = heights.length - 1;
+  let maxRightHeight = 0;
+  let maxLeftHeight = 0;
+  let result = 0;
 
-  while (left <= right) {
+  while (left < right) {
     if (heights[left] <= heights[right]) {
-      if (heights[left] >= leftMaxHeight) {
-        leftMaxHeight = heights[left];
+      if (heights[left] >= maxLeftHeight) {
+        maxLeftHeight = heights[left];
       } else {
-        console.log("left max", leftMaxHeight);
-        console.log("height left", heights[left]);
-
-        result += leftMaxHeight - heights[left];
-        console.log("res", result);
+        result += maxLeftHeight - heights[left];
       }
       left++;
     } else {
-      if (heights[right] >= rightMaxHeight) {
-        rightMaxHeight = heights[right];
+      if (heights[right] >= maxRightHeight) {
+        maxRightHeight = heights[right];
       } else {
-        result += rightMaxHeight - heights[right];
+        result += maxRightHeight - heights[right];
       }
       right--;
     }

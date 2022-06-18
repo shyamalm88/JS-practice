@@ -8,7 +8,6 @@ const maxProfit = (prices) => {
     smallest = Math.min(smallest, prices[i]);
     maxProfit = Math.max(maxProfit, prices[i] - smallest);
   }
-  console.log(maxProfit);
   return maxProfit;
 };
 
