@@ -1,17 +1,23 @@
-const coinChange = function (coins, amount) {
-  let dp = Array(amount + 1).fill(-1);
+const coinChange = function (coins, amount, dp) {
   dp[0] = 0;
-  if (amount < 0) return -1;
   if (amount === 0) return 0;
-
+  let ans = Number.MAX_VALUE;
   for (let i = 0; i < coins.length; i++) {
-    for (let j = 1; j <= amount; j++) {
-      if (j >= coins[i]) {
-        dp[j] = Math.min(dp[j], dp[j - coins[i]] + 1);
+    if (amount - coins[i] >= 0) {
+      let subAns = 0;
+      if (dp[amount - coins[i]] != -1) {
+        subAns = dp[amount - coins[i]];
+      } else {
+        subAns = coinChange(coins, amount - coins[i], dp);
+      }
+      if (subAns != Number.MAX_VALUE && subAns + 1 < ans) {
+        ans = subAns + 1;
       }
     }
   }
-  return dp[amount] > amount ? -1 : dp[amount];
+  return (dp[amount] = ans);
 };
 
-console.log(coinChange([1, 2, 5], 11));
+let amount = 18;
+let dp = Array(amount + 1).fill(-1);
+console.log(coinChange([7, 5, 1], 18, dp));
