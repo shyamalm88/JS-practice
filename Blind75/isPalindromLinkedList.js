@@ -5,7 +5,6 @@ class Node {
     this.next = null;
   }
 }
-
 const middleOfLinkedList = (head) => {
   let fast = head;
   let slow = head;
@@ -14,10 +13,37 @@ const middleOfLinkedList = (head) => {
     slow = slow.next;
     fast = fast.next.next;
   }
-  console.log(slow.data);
+  // console.log(slow.data);
+  return slow;
 };
 
-const isPalindromeLinkedList = (head) => {};
+const reverseLinkedList = (head) => {
+  let prev = null;
+  let current = head;
+  let next = null;
+  while (current != null) {
+    next = current.next;
+    current.next = prev;
+    prev = current;
+    current = next;
+  }
+  return prev;
+};
+
+const isPalindromeLinkedList = (head) => {
+  const node = reverseLinkedList(middleOfLinkedList(head));
+  let left = head;
+  let right = node;
+  while (right) {
+    if (left.data != right.data) {
+      return false;
+    } else {
+      left = left.next;
+      right = right.next;
+    }
+  }
+  return true;
+};
 
 const printList = (node) => {
   while (node != null) {
@@ -39,6 +65,6 @@ push(4);
 push(3);
 push(2);
 push(1);
-printList(head);
-console.log("==========");
-middleOfLinkedList(head);
+// printList(head);
+// console.log("==========");
+console.log(isPalindromeLinkedList(head));

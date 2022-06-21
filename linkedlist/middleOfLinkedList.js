@@ -15,6 +15,7 @@ const middleOfLinkedList = (head) => {
     fast = fast.next.next;
   }
   console.log(slow.data);
+  return slow;
 };
 
 const printList = (node) => {
