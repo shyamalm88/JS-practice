@@ -1,30 +1,22 @@
-const mergeSort = (array) => {
-  const half = array.length / 2;
-
-  // Base case or terminating case
-  if (array.length < 2) {
-    return array;
+const mergeSort = function (arr) {
+  if (arr.length < 2) {
+    return arr;
   }
-
-  const left = array.splice(0, half);
-  return merge(mergeSort(left), mergeSort(array));
+  let mid = Math.floor(arr.length / 2);
+  let left = arr.splice(0, mid);
+  return merge(mergeSort(left), mergeSort(arr));
 };
 
-const merge = (left, right) => {
-  let arr = [];
-  // Break out of loop if any one of the array gets empty
+const merge = function (left, right) {
+  let res = [];
   while (left.length && right.length) {
-    // Pick the smaller among the smallest element of left and right sub arrays
-    if (left[0] > right[0]) {
-      arr.push(left.shift());
+    if (left[0] < right[0]) {
+      res.push(left.shift());
     } else {
-      arr.push(right.shift());
+      res.push(right.shift());
     }
   }
-
-  // Concatenating the leftover elements
-  // (in case we didn't go through the entire left or right array)
-  return [...arr, ...left, ...right];
+  return [...res, ...left, ...right];
 };
 
-console.log(mergeSort([3, 2, 1, 4, 5, 6]));
+console.log(mergeSort([2, 4, 1, 3, 6, 5, 7, 9, 0, 8, 1, 2, 6, 4, 3]));

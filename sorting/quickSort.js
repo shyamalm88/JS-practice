@@ -1,24 +1,27 @@
-const quickSort = (arr, l, h) => {
-  if (l < h) {
-    let pivot = partition(arr, l, h);
-    quickSort(arr, l, pivot - 1);
-    quickSort(arr, pivot + 1, h);
+const quickSort = function (arr, l, h) {
+  if (arr.length < 2) {
+    return arr;
   }
+  if (l < h) {
+    let j = partition(arr, l, h);
+    quickSort(arr, l, j - 1);
+    quickSort(arr, j + 1, h);
+  }
+
   return arr;
 };
 
-const swap = (arr, i, j) => {
-  let temp = arr[i];
-  arr[i] = arr[j];
-  arr[j] = temp;
+const swap = function (arr, i, j) {
+  let temp = arr[j];
+  arr[j] = arr[i];
+  arr[i] = temp;
 };
 
-const partition = (arr, l, h) => {
+const partition = function (arr, l, h) {
   let pivot = arr[h];
   let i = l - 1;
-
   for (let j = l; j <= h - 1; j++) {
-    if (arr[j] < pivot) {
+    if (arr[j] <= pivot) {
       i++;
       swap(arr, i, j);
     }
@@ -27,5 +30,5 @@ const partition = (arr, l, h) => {
   return i + 1;
 };
 
-const arr = [1, 4, 2, 5, 3, 6, 7, 9, 0];
+const arr = [2, 1, 3, 2, 4, 6, 5, 7, 8, 3, 0, 2];
 console.log(quickSort(arr, 0, arr.length - 1));

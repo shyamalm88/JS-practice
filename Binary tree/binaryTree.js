@@ -25,4 +25,12 @@ class BinaryTree {
     console.log(node.value);
     inOrder(node.right);
   }
+  postOrder(node) {
+    if (node === null) {
+      return;
+    }
+    inOrder(node.left);
+    inOrder(node.right);
+    console.log(node.value);
+  }
 }

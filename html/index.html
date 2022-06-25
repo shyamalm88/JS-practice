@@ -1,0 +1,39 @@
+<style>
+    .wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    .text{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: absolute;
+    }
+
+    ul#styled li{
+        color: black;
+    }
+    .red{
+        color: red;
+    }
+</style>
+<script>
+    showElement = function (value){
+        console.log(value)
+    }
+</script>
+<div class="wrapper">
+    <img src="https://picsum.photos/200/300" alt="">
+    <div class="text">
+<p>image</p>
+    </div>
+
+
+    <ul id="styled" onclick="showElement(event.target)">
+        <li class="red">abc</li>
+    </ul>
+    
+</div>
