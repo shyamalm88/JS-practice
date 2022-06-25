@@ -7,14 +7,7 @@ const quickSort = function (arr, l, h) {
     quickSort(arr, l, j - 1);
     quickSort(arr, j + 1, h);
   }
-
   return arr;
-};
-
-const swap = function (arr, i, j) {
-  let temp = arr[j];
-  arr[j] = arr[i];
-  arr[i] = temp;
 };
 
 const partition = function (arr, l, h) {
@@ -30,5 +23,11 @@ const partition = function (arr, l, h) {
   return i + 1;
 };
 
-const arr = [2, 1, 3, 2, 4, 6, 5, 7, 8, 3, 0, 2];
+const swap = function (arr, i, j) {
+  let temp = arr[j];
+  arr[j] = arr[i];
+  arr[i] = temp;
+};
+
+const arr = [9, 8, 7, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 console.log(quickSort(arr, 0, arr.length - 1));
