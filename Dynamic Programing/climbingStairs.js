@@ -18,4 +18,4 @@ const climbingStairsRecursion = function (n) {
 
 console.log(climbingStairs(3));
 
-console.log(climbingStairsRecursion(3));
+console.log(climbingStairsRecursion(100));
