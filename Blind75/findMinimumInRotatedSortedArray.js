@@ -3,10 +3,6 @@ const findMin = function (arr) {
   let end = arr.length - 1;
   let res = arr[0];
   while (start <= end) {
-    if (arr[start] < arr[end]) {
-      result = Math.min(res, arr[start]);
-      break;
-    }
     let mid = Math.floor((start + end) / 2);
     res = Math.min(res, arr[mid]);
     if (arr[mid] >= arr[start]) {
@@ -19,3 +15,4 @@ const findMin = function (arr) {
 };
 
 console.log(findMin([3, 4, 5, 6, 7, 8, 9, 0, 1, 2]));
+console.log(findMin([0, 1, 2, 3]));
