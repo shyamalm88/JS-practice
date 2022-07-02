@@ -1,0 +1,16 @@
+ul li {
+  list-style: none;
+}
+.card {
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin: 10px;
+  opacity: 0;
+  transform: translate(100px);
+  transition: 150ms;
+}
+
+.card.show {
+  transform: translate(0px);
+  opacity: 1;
+}

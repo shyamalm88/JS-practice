@@ -10,7 +10,7 @@ const climbingStairs = function (n) {
 };
 
 const climbingStairsRecursion = function (n) {
-  if (n === 0 || n === 1) return 1;
+  if (n == 0 || n == 1) return 1;
   let left = climbingStairsRecursion(n - 1);
   let right = climbingStairsRecursion(n - 2);
   return left + right;

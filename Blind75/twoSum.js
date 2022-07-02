@@ -1,14 +1,14 @@
 const twoSum = function (arr, target) {
-  const map = new Map();
-  const result = [];
+  let map = new Map();
+  let results = [];
   for (let i = 0; i < arr.length; i++) {
     if (map.has(arr[i])) {
-      result.push([i, map.get(arr[i])]);
+      results.push([map.get(arr[i]), i]);
     } else {
       map.set(target - arr[i], i);
     }
   }
-  return result;
+  return results;
 };
 
 console.log(twoSum([1, 2, 3, 4, 5, 6, 7], 7));
