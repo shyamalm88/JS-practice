@@ -1,76 +1,48 @@
-let head;
-let head2;
-class Node {
-  constructor(val) {
-    this.data = val;
-    this.next = null;
-  }
+function Node(data, next) {
+  this.data = data;
+  this.next = next;
 }
 
-const mergeTwoLinkedList = (list1, list2) => {
-  console.log(list1);
-  console.log(list2);
-  if (list1 === null) return list2;
-  if (list2 === null) return list1;
+function merge(L1, L2) {
+  // create new linked list pointer
+  var L3 = new Node(null, null);
+  var prev = L3;
 
-  if (list1.data > list2.data) {
-    let temp = list1;
-    list1 = list2;
-    list2 = temp;
-  }
-
-  let res = list1;
-
-  while (list1 != null && list2 != null) {
-    let temp = null;
-    while (list1 != null && list1.data <= list2.data) {
-      temp = list1;
-      list1 = list1.next;
+  // while both linked lists are not empty
+  while (L1 !== null && L2 !== null) {
+    if (L1.data <= L2.data) {
+      prev.next = L1;
+      L1 = L1.next;
+    } else {
+      prev.next = L2;
+      L2 = L2.next;
     }
-    temp.next = list2;
-    temp = list1;
-    list1 = list2;
-    list2 = temp;
+    prev = prev.next;
   }
-  return res;
-};
 
-const printList = (node) => {
-  while (node != null) {
-    console.log(node.data + " ");
-    node = node.next;
+  // once we reach end of a linked list, append the other
+  // list because we know it is already sorted
+  if (L1 === null) {
+    prev.next = L2;
   }
-};
+  if (L2 === null) {
+    prev.next = L1;
+  }
 
-const push = (data) => {
-  var temp = new Node(data);
-  temp.next = head;
-  head = temp;
-};
+  // return the sorted linked list
+  return L3.next;
+}
 
-const push2 = (data) => {
-  var temp = new Node(data);
-  temp.next = head2;
-  head2 = temp;
-};
+// create first linked list: 1 -> 3 -> 10
+var n3 = new Node(10, null);
+var n2 = new Node(3, n3);
+var n1 = new Node(1, n2);
+var L1 = n1;
 
-push(85);
-push(15);
-push(4);
-push(20);
-push(10);
+// create second linked list: 5 -> 6 -> 9
+var n6 = new Node(9, null);
+var n5 = new Node(6, n6);
+var n4 = new Node(5, n5);
+var L2 = n4;
 
-push2(16);
-push2(12);
-push2(8);
-push2(6);
-push2(19);
-
-// printList(head);
-console.log("+++++++");
-// printList(head2);
-console.log("==========");
-
-mergeTwoLinkedList(head, head2);
-
-printList(head2);
+merge(L1, L2);
