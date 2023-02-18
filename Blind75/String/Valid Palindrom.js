@@ -15,7 +15,7 @@ Input: "race a car"
 Output: false
  */
 
-const isPalindrome = function (s) {
+const isPalindromeWithoutSpecialChar = function (s) {
   let newS = "";
   for (const c of s) {
     if (/[a-zA-Z0-9]/.test(c)) {
@@ -29,3 +29,20 @@ const isPalindrome = function (s) {
   }
   return true;
 };
+
+const isPalindrome = function (s) {
+  let newStr = s.toLowerCase();
+  let newStrArr = newStr.split("");
+  let start = 0;
+  let end = newStrArr.length - 1;
+  while (start < end) {
+    if (newStrArr[start] !== newStr[end]) {
+      return false;
+    }
+    start++;
+    end--;
+  }
+  return true;
+};
+
+console.log(isPalindrome("madam"));
