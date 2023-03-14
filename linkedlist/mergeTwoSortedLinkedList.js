@@ -13,27 +13,6 @@ const SortedMerge = (list1, list2) => {
   if (list1 === null) return list2;
   if (list2 === null) return list1;
 
-  // if (list1.data > list2.data) {
-  //   let temp = list1;
-  //   list1 = list2;
-  //   list2 = temp;
-  // }
-
-  // let res = list1;
-
-  // while (list1 != null && list2 != null) {
-  //   let temp = null;
-  //   while (list1 != null && list1.data <= list2.data) {
-  //     temp = list1;
-  //     list1 = list1.next;
-  //   }
-  //   temp.next = list2;
-  //   temp = list1;
-  //   list1 = list2;
-  //   list2 = temp;
-  // }
-  // return res;
-
   if (list1.data < list2.data) {
     list1.next = SortedMerge(list1.next, list2);
     return list1;
