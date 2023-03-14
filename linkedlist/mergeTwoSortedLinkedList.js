@@ -7,7 +7,7 @@ class Node {
   }
 }
 
-const mergeTwoLinkedList = (list1, list2) => {
+const SortedMerge = (list1, list2) => {
   console.log(list1);
   console.log(list2);
   if (list1 === null) return list2;
@@ -79,6 +79,6 @@ console.log("+++++++");
 // printList(head2);
 console.log("==========");
 
-mergeTwoLinkedList(head, head2);
+SortedMerge(head, head2);
 
 printList(head2);
