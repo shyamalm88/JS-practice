@@ -9,3 +9,18 @@ var getIntersectionNode = function (headA, headB) {
 
   return a;
 };
+
+function MergeNode(headA, headB) {
+  let hs = new Set();
+  while (headA != null) {
+    hs.add(headA);
+    headA = headA.next;
+  }
+  while (headB != null) {
+    if (hs.has(headB)) {
+      return headB;
+    }
+    headB = headB.next;
+  }
+  return null;
+}
