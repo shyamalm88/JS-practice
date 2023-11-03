@@ -7,7 +7,7 @@ Car.prototype.drive = function () {
 const FourWheeler = function (name) {
   Car.call(this, name);
 };
-FourWheeler.prototype = Object.create(car.prototype);
-FourWheeler.constructor = Car.prototype.constructor;
+FourWheeler.prototype = new Car();
+FourWheeler.prototype.constructor = Car;
 const bmw = new FourWheeler("BMW");
 bmw.drive();
