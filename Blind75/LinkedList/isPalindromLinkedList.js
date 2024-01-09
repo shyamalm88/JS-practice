@@ -64,7 +64,6 @@ push(4);
 push(3);
 push(2);
 push(1);
-push(0);
 printList(head);
 console.log("==========");
 console.log(isPalindromeLinkedList(head));

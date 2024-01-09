@@ -6,6 +6,7 @@ let ob = {
     HTML: "GFG",
     CSS: "GFG",
     JavaScript: "GFG",
+    address: { city: ["jkhhjkkhjk"] },
   },
 };
 

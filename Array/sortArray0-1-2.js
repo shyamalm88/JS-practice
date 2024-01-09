@@ -22,4 +22,4 @@ const sortArray = (nums) => {
   return nums;
 };
 
-sortArray([0, 1, 0, 1, 1, 0, 0, 2, 1, 2, 2, 0, 2, 1, 0]);
+console.log(sortArray([0, 1, 0, 1, 1, 0, 0, 2, 1, 2, 2, 0, 2, 1, 0]));

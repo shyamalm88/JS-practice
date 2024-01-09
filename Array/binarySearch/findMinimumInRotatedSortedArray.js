@@ -1,17 +1,22 @@
-const findMin = function (arr) {
-  let start = 0;
-  let end = arr.length - 1;
-  while (start <= end) {
-    let mid = Math.floor((start + end) / 2);
-    if (arr[mid] > arr[mid + 1]) return arr[mid + 1];
-    if (arr[mid] > arr[mid - 1]) return arr[mid - 1];
-    if (arr[mid] > arr[0]) {
-      end = mid + 1;
+const findMin = function (arr, low, high) {
+  if (arr[low] <= arr[high]) {
+    return arr[low];
+  }
+
+  while (low <= high) {
+    let mid = Math.floor((low + high) / 2);
+    if (arr[mid] < arr[mid - 1]) {
+      return arr[mid];
+    }
+    if (arr[mid] > arr[high]) {
+      low = mid + 1;
     } else {
-      start = mid - 1;
+      high = mid - 1;
     }
   }
+
+  // If no minimum element is found, return -1
   return -1;
 };
-
-console.log(findMin([3, 4, 5, 6, 7, 8, 9, 0, 1, 2]));
+const arr = [3, 4, 5, 6, 7, 8, 9, 0, 1, 2];
+console.log(findMin(arr, 0, arr.length - 1));

@@ -1,5 +1,5 @@
-const debounce = function (callback, delay) {
-  let timer;
+const debounce = (callback, delay) => {
+  let timer = null;
   return function () {
     let context = this;
     let args = arguments;
@@ -10,7 +10,7 @@ const debounce = function (callback, delay) {
   };
 };
 
-let a = debounce((args) => {
-  console.log(args);
-}, 100);
-a("hi");
+const a = debounce(() => {
+  console.log("hi");
+}, 1000);
+a();

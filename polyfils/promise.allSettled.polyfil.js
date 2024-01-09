@@ -49,6 +49,6 @@ const promise2 = new Promise((resolve, reject) => {
   setTimeout(reject, 100, "two");
 });
 
-Promise.myAllSettled([promise1, promise2]).then((val) => {
+Promise.myAllSettled2([promise1, promise2]).then((val) => {
   console.log(val);
 });
