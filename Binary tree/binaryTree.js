@@ -29,8 +29,8 @@ class BinaryTree {
     if (node === null) {
       return;
     }
-    inOrder(node.left);
-    inOrder(node.right);
+    postOrder(node.left);
+    postOrder(node.right);
     console.log(node.value);
   }
 }

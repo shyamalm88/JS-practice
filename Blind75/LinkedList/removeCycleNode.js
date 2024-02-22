@@ -5,9 +5,9 @@ const detectLoop = function (head) {
   while (slow && fast && fast.next) {
     slow = slow.next;
     fast = fast.next.next;
-    if (slow === fast) {
-      removeCycle(head, fast);
-    }
+  }
+  if (slow === fast) {
+    removeCycle(head, fast);
   }
 };
 
